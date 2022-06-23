@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             // "program": "${workspaceFolder}/bin/CRheo",
-            "program": "${workspaceFolder}/src/main",
+            "program": "${workspaceFolder}/src/test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/src",
