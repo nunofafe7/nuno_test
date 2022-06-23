@@ -8,7 +8,7 @@ typedef std::array<double, 3> vector3;
 
 int main()
 {
-    Field<double> myFieldTest0;//(2);
+    Field<double> myFieldTest0(2);
     Field<vector3> myFieldTest1;//(2);
     // myFieldTest1.mag();
    /* RunTime time;

@@ -25,24 +25,17 @@ double  total;
 public:
     //vector of scalars
     std::vector<vectorType>  fieldValues;
-
-    //vector of vectores
-    //std::vector<std::vector<double>> vectorFieldValues;
-    //std::vector<double> vectorFieldMags;
-
-    //vector of tensors
-    //std::array<double, 9> tensor;
-    //std::vector<tensor> tensorValues;
-
-
+    
 // Member functions
     
     double mag();
+    //double mag(const std::vector<double>& fieldValues);
+    //std::vector<double> mag();
 
 // Constructors
 
     Field();
-    // Field(int n);
+    Field(int n);
     // Field(int n, std::vector<double> vec);
 };
 #include "fieldI.h"
