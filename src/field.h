@@ -20,12 +20,12 @@ private:
 // Data members
 
 double createdValue;
-double  total;
+double total;
 
 public:
     //vector of scalars
     std::vector<vectorType>  fieldValues;
-    
+
 // Member functions
     
     double mag();
@@ -36,7 +36,7 @@ public:
 
     Field();
     Field(int n);
-    // Field(int n, std::vector<double> vec);
+    Field(int n, std::vector<double> vec);
 };
 #include "fieldI.h"
 

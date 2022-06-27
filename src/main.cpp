@@ -9,9 +9,7 @@ typedef std::array<double, 3> vector3;
 int main()
 {
     Field<double> myFieldTest0(5);
+    std::cout<< "magnitude of vector: " <<myFieldTest0.mag() << std::endl;
     //Field<vector3> myFieldTest1(3);
-    // myFieldTest1.mag();
-   /* RunTime time;
-    Mesh mesh(time);*/
 }
 
