@@ -33,7 +33,7 @@ double Field<vectorType>::mag()
 }
 
 template< typename vectorType>
-Field<vectorType>::Field(int n, std::vector<double> vec)
+Field<vectorType>::Field(int n, std::array<double, 3> vec)
 {
      srand(time(NULL));
      for(int r= 0; r <n; r++){
@@ -53,7 +53,7 @@ Field<vectorType>::Field(int n, std::vector<double> vec)
  }
 
 
-/*std::vector<double> Field::mag()
+/*std::vector<double> Field::mag(vector3)
 {
     std::vector<double> vectorMags(this->vectorFieldValues.size(),0.0);        // size of vectorFieldValues and inicialized to 0
     

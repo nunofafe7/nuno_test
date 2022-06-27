@@ -30,13 +30,13 @@ public:
     
     double mag();
     //double mag(const std::vector<double>& fieldValues);
-    //std::vector<double> mag();
+    //std::vector<double> mag(vector3);
 
 // Constructors
 
     Field();
     Field(int n);
-    Field(int n, std::vector<double> vec);
+    Field(int n, std::array<double, 3> vec);
 };
 #include "fieldI.h"
 

@@ -10,6 +10,7 @@ int main()
 {
     Field<double> myFieldTest0(5);
     std::cout<< "magnitude of vector: " <<myFieldTest0.mag() << std::endl;
-    //Field<vector3> myFieldTest1(3);
+    Field<vector3> myFieldTest1(4, {0,0,0});
+    //std::cout<< "magnitude of vector: " <<myFieldTest1.mag() << std::endl;
 }
 
