@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 23 10:21:10 2022
+# Make data base, printed on Wed Jun 29 13:58:00 2022
 
 # Variables
 
@@ -101,7 +101,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3891
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1544064
 # automatic
 %F = $(notdir $%)
 # environment
@@ -149,7 +149,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f02a32b4-c987-4d85-9481-4c0daa25ac1a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-06007345-9e11-4571-bb5d-a0d1df8fc839.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -183,8 +183,6 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
-NO_AT_BRIDGE = 1
-# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
@@ -211,9 +209,9 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3891
+VSCODE_PID = 1544064
 # variable set hash-table stats:
-# Load=100/1024=10%, Rehash=0, Collisions=13/122=11%
+# Load=99/1024=10%, Rehash=0, Collisions=13/121=11%
 
 # Pattern-specific Variable Values
 
@@ -221,9 +219,9 @@ VSCODE_PID = 3891
 
 # Directories
 
-# . (device 2050, inode 29495323): 10 files, no impossibilities.
+# . (device 2050, inode 29495323): 7 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -273,12 +271,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 155 B / avg = 8 B
-# current buf: size = 8162 B / used = 155 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 128 B / avg = 8 B
+# current buf: size = 8162 B / used = 128 B / count = 15 / avg = 8 B
 
-# strcache performance: lookups = 21 / hit rate = 14%
+# strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Thu Jun 23 10:21:10 2022
+# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
+# Finished Make data base on Wed Jun 29 13:58:00 2022
 
  
