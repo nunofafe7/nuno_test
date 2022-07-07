@@ -19,4 +19,5 @@ int main()
     std::cout<< "   " <<std::endl;
     //std::cout<< "magnitude of tensor: " << myFieldTest2.mag() << std::endl;
 }
+.
 
