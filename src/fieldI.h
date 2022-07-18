@@ -22,22 +22,6 @@ Field<vectorType>::Field(int n)
 
 }
 
-template< >
-double Field<double>::mag(){
-
-    double  total = 0;
-
-    for (int i = 0; i < fieldValues.size(); ++i)
-        {
-            total += fieldValues[i]*fieldValues[i];                        //each element is multiplied by is own value and summed to a total
-        }
-    return sqrt(total);
-}
-
-
-
-
-
 //vector of vectores
 template< typename vectorType>
 Field<vectorType>::Field(int n, std::array<double, 3> vec)
@@ -60,107 +44,42 @@ Field<vectorType>::Field(int n, std::array<double, 3> vec)
      // this->vectorFieldMags=this->vectorFieldValues.this->mag();
  }
 
-template< >
-std::vector<double> Field<vector3>::mag(int n, const std::array<double, 3>& vec){
+template< typename vectorType>
+vectorType Field<vectorType>::mag(){
 
-    //std::vector<double> vectorMags(vectorFieldValues.size(),0.0);        // size of vectorFieldValues and inicialized to 0
-    
-    std::cout << "--- Magnitude of each vector: ----------------- " << std::endl;
-        
-        std::vector<double> vectorMags(vec.size(),0.0);        // size of vectorFieldValues and inicialized to 0
-        
-        for (int i = 0; i < vectorFieldValues.size(); ++i)
-        double  total = 0;
-        {
-            for (int posI = 0; posI < vectorMags.size(); posI++)
-            {
-                vectorMags[posI] = vec[posI];                 //magnitude for the vector inside vectorFieldValues in the pistion I                       
-            }
-
-            for (int i = 0; i < vectorMags.size(); ++i)
-            {
-                total += vectorMags[i]*vectorMags[i];
-                              
-                std::cout<< "magnitude of vector: " << sqrt(total) << std::endl;
-            
-            }
-        }
-        return {0,0,0};
-}
-
-
-
-
-
-/*template< typename vectorType>
-double Field::mag(const std::vector<double>& fieldValues)
-{
     double  total = 0;
 
-    for (int i = 0; i < vectorValues.size(); ++i)
+    for (int i = 0; i < fieldValues.size(); ++i)
         {
-            total += vectorValues[i]*vectorValues[i];                      
+            total += fieldValues[i]*fieldValues[i];                        //each element is multiplied by is own value and summed to a total
         }
-    return sqrt(total);
+    return sqrt(total);   
+}
 
-/*template< typename vectorType>
-double Field<vectorType>::mag(int n, std::array<double, 3> vec){
-
-        for (int i = 0; i < vectorFieldValues.size(); ++i)
-                double  total = 0;
-            {
-                std::vector<double> vectorMags(vec.size(),0.0);        // size of vectorFieldValues and inicialized to 0
-                for (int posI = 0; posI < vectorMags.size(); posI++)
-                {
-                    vectorMags[posI] = vec[posI];                 //magnitude for the vector inside vectorFieldValues in the pistion I                       
-                }
-
-                for (int i = 0; i < vectorMags.size(); ++i)
-                {
-                    total += vectorMags[i]*vectorMags[i];                      
-                }
-            }
-            std::cout<< "magnitude of vector: " << sqrt(total) << std::endl;
-};*/
-
-
-
-
-
-
-/*magnitude     
-template< >
-std::vector<double>  Field<vector3>::mag(const std::vector<double>& fieldValues)
-{
-    std::vector<double> vectorMags(fieldValues.size(),0.0);        // size of vectorFieldValues and inicialized to 0
+template< typename vectorType>
+vectorType Field<vectorType>::magN(){
     
     std::cout << "--- Magnitude of each vector: ----------------- " << std::endl;
-    for (int posI = 0; posI < vectorMags.size(); posI++)
+
+    std::array<double, 3> total;
+
+    N= (int)vectorFieldValues.size();
+
+    for (int i = 0; i < vectorFieldValues.size(); i++)
     {
-        vectorMags[posI] = mag(fieldValues[posI]);                 //magnitude for the vector inside vectorFieldValues in the pistion I
-        std::cout << vectorMags[posI] << std::endl;                        
+       for (int j = 0; j < vectorFieldValues[i].size(); j++)
+       { 
+            total[i] += vectorFieldValues[i][j]*vectorFieldValues[i][j];                        //each element is multiplied by is own value and summed to a total
+       }
+
+        total[i] = sqrt(total[i]);
     }
-    std::cout << "--- End of magnitudes ----------------- " << std::endl;
-    return vectorMags;                                                
+    
+    return total;
 }
+          
 
-template< >
-double Field::mag(const std::vector<double>& fieldValues)
-{
-    double  total = 0;
-
-    for (int i = 0; i < vectorValues.size(); ++i)
-        {
-            total += vectorValues[i]*vectorValues[i];                      
-        }
-    return sqrt(total);
-}
-*/
-
-
-
-
-
+            
 
 //vector of tensors
 
@@ -180,26 +99,28 @@ Field<vectorType>::Field(double n, std::array<double, 9> ten)
          }
          std::cout << "--- End tensor ------------------- " << std::endl;
          tensorFieldValues.push_back(ten);
+    }
+}
 
-        /*for (int i = 0; i < tensorFieldValues.size(); ++i)
-        double  total = 0;
-        {
-            std::vector<double> tensorMags(ten.size(),0.0);        // size of vectorFieldValues and inicialized to 0
-            for (int posI = 0; posI < tensorMags.size(); posI++)
-            {
-                tensorMags[posI] = ten[posI];                 //magnitude for the vector inside vectorFieldValues in the pistion I                       
+template< typename vectorType>
+vectorType Field<vectorType>::magNT(){
+
+    std::cout << "--- Magnitude of each tensor: ----------------- " << std::endl;
+
+    std::array<double, 9> totalT;
+
+    M= (int)tensorFieldValues.size();
+
+    for (int i = 0; i < tensorFieldValues.size(); i++)
+    {
+        for (int j = 0; j < tensorFieldValues[i].size(); j++)
+            { 
+                totalT[i] += tensorFieldValues[i][j]*tensorFieldValues[i][j];                        //each element is multiplied by is own value and summed to a total
             }
 
-            for (int i = 0; i < tensorMags.size(); ++i)
-            {
-                total += tensorMags[i]*tensorMags[i];                      
-            }
-        }
-        std::cout<< "magnitude of tensor: " << sqrt(total) << std::endl;*/
-     }
-     
-     // this->vectorFieldMags=this->vectorFieldValues.this->mag();
- }
+        totalT[i] = sqrt(totalT[i]);
+    }
+    
+    return totalT;
 
-//template< typename vectorType>
-//double Field<vectorType>::mag(tensor){}
+}

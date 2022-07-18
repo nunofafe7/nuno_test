@@ -32,10 +32,13 @@ public:
 // Member functions
 
     vectorType mag();
-    std::vector<double> mag(int n, const std::array<double, 3>& vec);
+    vectorType magN();
+    vectorType magNT();
+    
+    int N;
+    int M;
     
 // Constructors
-
     Field();
     Field(int n);
     Field(int n, std::array<double, 3> vec);
