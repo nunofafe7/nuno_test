@@ -1,4 +1,3 @@
-
 #include <vector>
 #include <array>
 
@@ -11,36 +10,30 @@ int main()
 {
     //vector of scalars
     Field<double> myFieldTest0(5);
-    std::cout<< "magnitude of vector: " << myFieldTest0.mag() << std::endl;
     std::cout<< "   " <<std::endl;
 
 
 
     //vector of vectores
-    Field<vector3> myFieldTest1(4, {0});
-
-    vector3 total = myFieldTest1.magN();
-
-    for (int i = 0; i < myFieldTest1.N; ++i)
-    {
-
-        std::cout<< "magnitude of vector:" << total[i] << std::endl;
-
-    }    
+    Field<vector3> myFieldTest1(2);
     std::cout<< "   " <<std::endl;
+
 
 
 
     //vector of tensors    
-    Field<tensor> myFieldTest2(2.0, {0});
+    Field<tensor> myFieldTest2(1);
     std::cout<< "   " <<std::endl;
 
-    tensor totalT = myFieldTest2.magNT();
 
-    for (int i = 0; i < myFieldTest2.M; ++i)
+
+
+    std::vector<double> FieldMags = myFieldTest0.mag();
+
+    for (int r = 0; r < myFieldTest0.N; ++r)
     {
 
-        std::cout<< "magnitude of tensor:" << totalT[i] << std::endl;
+        std::cout<< "magnitude is:" << FieldMags[r] << std::endl;
 
     }
 }

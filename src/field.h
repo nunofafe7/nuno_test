@@ -10,39 +10,29 @@
 #include <time.h>
 
 template< typename vectorType>
-
 class Field
-
 {
+    private:
 
-private:
+        // Data members
+        double createdValue;
+        double total;
 
-// Data members
+    public:
+        std::vector<double>  fieldValues;
+        std::vector<vector3> vectorFieldValues;
+        std::vector<tensor> tensorFieldValues;
+        std::vector<double> FieldMags;
 
-double createdValue;
-double total;
-
-public:
-    //vector of scalars
-    std::vector<vectorType>  fieldValues;
-    std::vector<vector3> vectorFieldValues;
-    //std::vector<double> vectorFieldMags;
-    std::vector<tensor> tensorFieldValues;
-
-// Member functions
-
-    vectorType mag();
-    vectorType magN();
-    vectorType magNT();
+        // Member functions
+        std::vector<double> mag();
     
-    int N;
-    int M;
+        int N;
+        int M;
     
-// Constructors
-    Field();
-    Field(int n);
-    Field(int n, std::array<double, 3> vec);
-    Field(double n, std::array<double, 9> ten);
+        // Constructors
+        Field();
+        Field(int n);
 };
 
 #include "fieldI.h"
