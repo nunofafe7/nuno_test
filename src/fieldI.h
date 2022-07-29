@@ -6,6 +6,8 @@ Field<vectorType>::Field()
 
 }
 
+
+//vector creation
 template< typename vectorType>
 Field<vectorType>::Field(int n)
 {
@@ -50,44 +52,8 @@ Field<vectorType>::Field(int n)
     }
 }
 
+
 //magnitude
-
-/*template < typename vectorType>
-std::vector<double> Field<vectorType>::mag(int n){
-    for(int i = 0; i < n; i++)
-    {   
-        fieldMags[i]=vectorField.at(i).calcMag();
-    }
-    return fieldMags;
-};
-
-template < typename vectorType>
-double Field<vectorType>::calcMag()
-    {       
-        vectorType vector;
-        double total = 0;
-        for (int j = 0; j < vector.size(); j++)
-        {
-            total += vector[j]*vector[j];                     
-            std::cout << "magnitude of vector is: " << sqrt(total) << std::endl;
-        }
-        return sqrt(total);
-    };
-
-template <>
-double Field<tensor>::calcMag()
-{
-    tensor vector;
-    double total = 0;
-    for (int j = 0; j < vector.size(); j+=4)
-    {
-        total += vector[j]*vector[j];                     
-        std::cout << "magnitude of vector is: " << sqrt(total) << std::endl;
-    }
-    return sqrt(total);
-}*/
-
-
 template < typename vectorType>
 std::vector<double> Field<vectorType>::mag()
 {
