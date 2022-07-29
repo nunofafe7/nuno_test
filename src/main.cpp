@@ -9,32 +9,19 @@ typedef std::array<double, 9> tensor;
 int main()
 {
     //vector of scalars
-    Field<double> myFieldTest0(5);
+    Field<double> myFieldTest0(4);
+    myFieldTest0.mag();
     std::cout<< "   " <<std::endl;
-
 
 
     //vector of vectores
-    Field<vector3> myFieldTest1(2);
+    Field<vector3> myFieldTest1(3);
+    myFieldTest1.mag();
     std::cout<< "   " <<std::endl;
-
-
 
 
     //vector of tensors    
-    Field<tensor> myFieldTest2(1);
+    Field<tensor> myFieldTest2(2);
+    myFieldTest2.mag();
     std::cout<< "   " <<std::endl;
-
-
-
-
-    std::vector<double> FieldMags = myFieldTest0.mag();
-
-    for (int r = 0; r < myFieldTest0.N; ++r)
-    {
-
-        std::cout<< "magnitude is:" << FieldMags[r] << std::endl;
-
-    }
-}
 

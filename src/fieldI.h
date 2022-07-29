@@ -9,9 +9,9 @@ Field<vectorType>::Field()
 template< typename vectorType>
 Field<vectorType>::Field(int n)
 {
-    srand(time(NULL));
+    //srand(time(NULL));  //see this!!!
     for(int r= 0; r <n; r++)
-    {
+    {   
         createdValue=0;
         if(typeid(vectorType) == typeid(double))
         {
@@ -38,7 +38,6 @@ Field<vectorType>::Field(int n)
         {   
             std::cout << "--- Start vector ----------------- " << std::endl;
             std::array<double, 9> vec;
-
             for(int i=0; i<9; i++)
             {
             createdValue =(rand() %10)+(double(rand())/RAND_MAX);         //First we have the int number and then the decimal part
@@ -51,106 +50,99 @@ Field<vectorType>::Field(int n)
     }
 }
 
-template< typename vectorType>
+//magnitude
+
+/*template < typename vectorType>
+std::vector<double> Field<vectorType>::mag(int n){
+    for(int i = 0; i < n; i++)
+    {   
+        fieldMags[i]=vectorField.at(i).calcMag();
+    }
+    return fieldMags;
+};
+
+template < typename vectorType>
+double Field<vectorType>::calcMag()
+    {       
+        vectorType vector;
+        double total = 0;
+        for (int j = 0; j < vector.size(); j++)
+        {
+            total += vector[j]*vector[j];                     
+            std::cout << "magnitude of vector is: " << sqrt(total) << std::endl;
+        }
+        return sqrt(total);
+    };
+
+template <>
+double Field<tensor>::calcMag()
+{
+    tensor vector;
+    double total = 0;
+    for (int j = 0; j < vector.size(); j+=4)
+    {
+        total += vector[j]*vector[j];                     
+        std::cout << "magnitude of vector is: " << sqrt(total) << std::endl;
+    }
+    return sqrt(total);
+}*/
+
+
+template < typename vectorType>
 std::vector<double> Field<vectorType>::mag()
 {
-    N= (int)fieldValues.size();
+    return {0};
+};
 
-    for(int r= 0; r < fieldValues.size(); r++){
-
-    if(typeid(vectorType) == typeid(double))
+template<>
+std::vector<double>  Field<double>::mag()
+{
+    for(int r = 0; r < fieldValues.size(); r++)
     {
-        for (int i = 0; i < fieldValues.size(); i++)
-        {
-            FieldMags.push_back(fieldValues[i]);
-        }
+        total=0;
+        total += fieldValues[r]*fieldValues[r];                     
+        std::cout << "magnitude of scalar is: " << sqrt(total) << std::endl;
+        fieldMags.push_back(sqrt(total));
     }
+    return fieldMags;
+}
 
-
-    else if(typeid(vectorType) == typeid(vector3))
-    {  
-        N= (int)vectorFieldValues.size();
-        std::vector<double> total;
-
-        for (int i = 0; i < vectorFieldValues.size(); i++)
-        {
-            for (int j = 0; j < vectorFieldValues[i].size(); j++)
-            { 
-                total[i] += vectorFieldValues[i][j]*vectorFieldValues[i][j];                        //each element is multiplied by is own value and summed to a total
-            }
-        
-            FieldMags.push_back(sqrt(total[i]));
+template<>
+std::vector<double>  Field<vector3>::mag()
+{
+    for(int r = 0; r < vectorFieldValues.size(); r++)
+    {
+        double total=0;
+        for(int j = 0; j < 3; j++)
+        {   
+            total += vectorFieldValues[r][j]*vectorFieldValues[r][j];                     
         }
+        std::cout << "magnitude of vector is: " << sqrt(total) << std::endl;
+        fieldMags.push_back(sqrt(total));
     }
+    return fieldMags;
+}
 
-
-    else if(typeid(vectorType) == typeid(tensor))
+template<>
+std::vector<double>  Field<tensor>::mag()
+{
+    for(int r = 0; r < tensorFieldValues.size(); r++)
     {   
-
+        total=0;
+        int j=0;
+            double diag1 = tensorFieldValues[r][j=0]*tensorFieldValues[r][j=4];        //ok              
+            double diag2 = tensorFieldValues[r][j=0]*tensorFieldValues[r][j=8];         //ok
+            double diag3 = tensorFieldValues[r][j=4]*tensorFieldValues[r][j=8];         //ok
+            double diag4 = tensorFieldValues[r][j=1]*tensorFieldValues[r][j=3];         //ok
+            double diag5 = tensorFieldValues[r][j=5]*tensorFieldValues[r][j=7];         //ok
+            double diag6 = tensorFieldValues[r][j=2]*tensorFieldValues[r][j=6];         //ok
+                        
+        total=diag1+diag2+diag3-diag4-diag5-diag6;
+        std::cout << "magnitude of tensor is: " << total << std::endl;
     }
-}
-return FieldMags;
-}
-
-/*
-//vector of vectores
-template< typename vectorType>
-vectorType Field<vectorType>::mag(){
-
-    double  total = 0;
-
-    for (int i = 0; i < fieldValues.size(); ++i)
-        {
-            total += fieldValues[i]*fieldValues[i];                        //each element is multiplied by is own value and summed to a total
-        }
-    return sqrt(total);   
+    fieldMags.push_back(total);
+    return fieldMags;
 }
 
-template< typename vectorType>
-vectorType Field<vectorType>::magN(){
-    
-    std::cout << "--- Magnitude of each vector: ----------------- " << std::endl;
 
-    std::array<double, 3> total;
 
-    N= (int)vectorFieldValues.size();
-
-    for (int i = 0; i < vectorFieldValues.size(); i++)
-    {
-       for (int j = 0; j < vectorFieldValues[i].size(); j++)
-       { 
-            total[i] += vectorFieldValues[i][j]*vectorFieldValues[i][j];                        //each element is multiplied by is own value and summed to a total
-       }
-
-        total[i] = sqrt(total[i]);
-    }
-    
-    return total;
-}
-          
-
-            
-
-//vector of tensors
-template< typename vectorType>
-vectorType Field<vectorType>::magNT(){
-
-    std::cout << "--- Magnitude of each tensor: ----------------- " << std::endl;
-
-    std::array<double, 9> totalT;
-
-    M= (int)tensorFieldValues.size();
-
-    for (int i = 0; i < tensorFieldValues.size(); i++)
-    {
-        for (int j = 0; j < tensorFieldValues[i].size(); j++)
-            { 
-                totalT[i] += tensorFieldValues[i][j]*tensorFieldValues[i][j];                        //each element is multiplied by is own value and summed to a total
-            }
-
-        totalT[i] = sqrt(totalT[i]);
-    }
-    
-    return totalT;
-
-}*/

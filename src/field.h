@@ -11,28 +11,34 @@
 
 template< typename vectorType>
 class Field
+
 {
-    private:
 
-        // Data members
-        double createdValue;
-        double total;
+private:
 
-    public:
-        std::vector<double>  fieldValues;
-        std::vector<vector3> vectorFieldValues;
-        std::vector<tensor> tensorFieldValues;
-        std::vector<double> FieldMags;
+    // Data members
 
-        // Member functions
-        std::vector<double> mag();
+    double createdValue;
+
+public:
+
+    double total;
+    //vector of scalars
+    std::vector<double>  fieldValues;
+    std::vector<vector3> vectorFieldValues;
+    std::vector<tensor> tensorFieldValues;
+    std::vector<vectorType> vectorField;
+    std::vector<double> fieldMags;
+
+// Member functions
+    std::vector<double> mag();
+         
+    int N;
+    int M;
     
-        int N;
-        int M;
-    
-        // Constructors
-        Field();
-        Field(int n);
+// Constructors
+    Field();
+    Field(int n);
 };
 
 #include "fieldI.h"
