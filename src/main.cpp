@@ -24,4 +24,4 @@ int main()
     Field<tensor> myFieldTest2(2);
     myFieldTest2.mag();
     std::cout<< "   " <<std::endl;
-
+}
